@@ -1,10 +1,9 @@
-import java.util.*;
-public interface StoreCapable
-{
-    ArrayList<Product> getAllProduct();
-
-    void storeCdProduct(String name, int price, int size) throws Exception;
-
-    void storeBookProduct(String name, int price, int size) throws Exception;
+import java.util.ArrayList;
+public interface StoreCapable {
+	public ArrayList<Product> getAllProducts();
+	public void storeCDProduct(String name, int price, int size);
+	public void storeBookProduct(String name, int price, int size);
+	
+	
 
 }

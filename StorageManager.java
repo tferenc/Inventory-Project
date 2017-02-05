@@ -1,33 +1,35 @@
-import java.util.ArrayList;
 
-public class StorageManager
-{
-    private StoreCapable storage;
 
-    public void addStorage(StoreCapable storage)
-    {
-        this.storage = storage;
-    }
+public class StorageManager {
+	private StoreCapable storage;
+	public void addStorage(StoreCapable storage){
+		this.storage = storage;
 
-    public void addCdProduct(String name, int price, int tracks) throws Exception
-    {
-        Product cd = ((Store)storage).createProduct("CD", name, price, tracks) ;
-        ((Store) storage).store(cd);
-    }
+		
+	}
+	public void addCDProduct(String name, int price, int tracks){
+		storage.storeCDProduct(name, price, tracks);
+	}
 
-    public void addBookProduct(String name, int price, int size) throws Exception
-    {
-        Product book = ((Store)storage).createProduct("Book", name, price, size);
-        ((Store) storage).store(book);
-    }
+	public void addBookProduct(String name, int price, int size){
+		storage.storeBookProduct(name, price, size);
+	}
+	public String listProducts(){
+		String products = "";
+		for(Product product:storage.getAllProducts()){
+			products += product.name + ", ";
+			
+		}
+		return products;
+		
+	}
+	public int getTotalProductPrice(){
+		int price = 0;
+		for(Product product:storage.getAllProducts()){
+			price += product.price;
+			
+		}
+		return price;
+	}
 
-    public String listProducts()
-    {
-        return null;
-    }
-
-    public int getTotalProductPrice()
-    {
-        return 0;
-    }
 }
